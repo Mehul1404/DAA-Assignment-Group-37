@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithm Performance Analysis - Project Showcase</title>
+    <link href="style.css" rel="stylesheet">
+    <meta name="description" content="Explore and analyze algorithm performance based on research papers.">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+    <a href="#home">Home</a>
+    <a href="#paper1">Paper 1</a>
+    <a href="#paper2">Paper 2</a>
+    <a href="#paper3">Paper 3</a>
+    <a href="#comparative-analysis">Analysis</a>
+</nav>
+
+<div class="container">
+    <!-- Home Section -->
+    <section id="home" class="section">
+        <div class="jumbotron">
+            <h1 class="display-4">Algorithm Performance Analysis</h1>
+            <p class="lead">This project presents a comparative analysis of three maximal clique enumeration algorithms—Chiba & Nishizeki (1985), Tomita et al. (2006), and Eppstein et al. (2010)—highlighting their efficiency, scalability, and practical applicability. By evaluating theoretical foundations, computational complexities, and experimental performance across diverse datasets, the study identifies Eppstein et al.'s degeneracy-based approach as superior for large-scale networks, while underscoring the limitations of Chiba & Nishizeki's method in real-world scenarios. The findings emphasize the critical role of algorithmic selection in optimizing performance for modern graph analysis challenges.</p>
+        </div>
+    </section>
+
+    <!-- Dataset Sections -->
+    <section id="dataset1" class="section">
+        <h2>Dataset 1: Enron Email Communication Network</h2>
+        <div class="card">
+            <h3 class="card-title">Description</h3>
+            <p class="card-text">
+                The Enron email network represents communication patterns from approximately 500,000 emails made public during federal investigations. 
+                This real-world network contains email addresses as nodes, with undirected edges representing at least one email exchange between addresses. 
+                Non-Enron addresses act as network endpoints, while the dataset preserves original communication patterns between Enron employees.
+            </p>
+            
+            <h4 class="card-subtitle">Key Statistics</h4>
+            <div class="table-responsive">
+                <table class="dataset-table">
+                    <tbody>
+                        <tr><td>Nodes</td><td>36,692</td></tr>
+                        <tr><td>Edges</td><td>183,831</td></tr>
+                        <tr><td>Largest WCC Nodes</td><td>33,696 (91.8%)</td></tr>
+                        <tr><td>Largest WCC Edges</td><td>180,811 (98.4%)</td></tr>
+                        <tr><td>Average Clustering Coefficient</td><td>0.4970</td></tr>
+                        <tr><td>Triangles</td><td>727,044</td></tr>
+                        <tr><td>Network Diameter</td><td>11</td></tr>
+                        <tr><td>90%-ile Effective Diameter</td><td>4.8</td></tr>
+                    </tbody>
+                </table>
+            </div>
+    
+            <div class="text-center">
+                <img src="email.jpeg" 
+                     alt="Enron Email Network Structure" 
+                     class="img-fluid">
+                <p class="mt-2"><em>Visualization of email communication patterns in the Enron network</em></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="dataset2" class="section">
+        <h2>Dataset 2: CAIDA Internet Topology Graph</h2>
+        <div class="card">
+            <h3 class="card-title">Description</h3>
+            <p class="card-text">
+                This large-scale network graph represents internet infrastructure topology based on 2005 traceroute data from CAIDA's Skitter project. 
+                Capturing routing paths between multiple sources and millions of destinations, it provides a comprehensive view of global internet 
+                connectivity patterns at scale. The dataset preserves actual routing relationships between autonomous systems and network nodes.
+            </p>
+            
+            <h4 class="card-subtitle">Key Statistics</h4>
+            <div class="table-responsive">
+                <table class="dataset-table">
+                    <tbody>
+                        <tr><td>Nodes</td><td>1,696,415</td></tr>
+                        <tr><td>Edges</td><td>11,095,298</td></tr>
+                        <tr><td>Largest WCC Nodes</td><td>1,694,616 (99.9%)</td></tr>
+                        <tr><td>Largest WCC Edges</td><td>11,094,209 (100%)</td></tr>
+                        <tr><td>Average Clustering Coefficient</td><td>0.2581</td></tr>
+                        <tr><td>Triangles</td><td>28,769,868</td></tr>
+                        <tr><td>Network Diameter</td><td>25</td></tr>
+                        <tr><td>90%-ile Effective Diameter</td><td>6</td></tr>
+                    </tbody>
+                </table>
+            </div>
+    
+            <div class="text-center">
+                <img src="skitter.jpeg" 
+                     alt="CAIDA Internet Topology Structure" 
+                     class="img-fluid">
+                <p class="mt-2"><em>Visualization of routing paths in the CAIDA Skitter internet topology</em></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="dataset3" class="section">
+        <h2>Dataset 3: Wikipedia Administrator Election Network</h2>
+        <div class="card">
+            <h3 class="card-title">Description</h3>
+            <p class="card-text">
+                This directed network captures voting patterns from 2,794 Wikipedia administrator elections between 2003-2008. Nodes represent users, 
+                with directed edges indicating votes cast (from voter to candidate). The dataset includes both successful promotions (1,235 elections) 
+                and unsuccessful attempts (1,559 elections), with participation from 7,066 unique users. Votes are evenly split between existing 
+                administrators and regular users, reflecting Wikipedia's collaborative governance structure.
+            </p>
+            
+            <h4 class="card-subtitle">Key Statistics</h4>
+            <div class="table-responsive">
+                <table class="dataset-table">
+                    <tbody>
+                        <tr><td>Nodes</td><td>7,115</td></tr>
+                        <tr><td>Edges</td><td>103,689</td></tr>
+                        <tr><td>Largest WCC Nodes</td><td>7,066 (99.3%)</td></tr>
+                        <tr><td>Largest WCC Edges</td><td>103,663 (100%)</td></tr>
+                        <tr><td>Largest SCC Nodes</td><td>1,300 (18.3%)</td></tr>
+                        <tr><td>Largest SCC Edges</td><td>39,456 (38.1%)</td></tr>
+                        <tr><td>Average Clustering Coefficient</td><td>0.1409</td></tr>
+                        <tr><td>Triangles</td><td>608,389</td></tr>
+                        <tr><td>Network Diameter</td><td>7</td></tr>
+                        <tr><td>90%-ile Effective Diameter</td><td>3.8</td></tr>
+                    </tbody>
+                </table>
+            </div>
+    
+            <div class="text-center">
+                <img src="wiki.jpeg" 
+                     alt="Wikipedia Administrator Election Patterns" 
+                     class="img-fluid">
+                <p class="mt-2"><em>Visualization of voting relationships in Wikipedia's administrator elections</em></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Paper 1: Tomita et al. -->
+    <section id="paper1" class="section">
+        <h2>Research Paper 1: Worst-Case Time Complexity for Generating All Maximal Cliques</h2>
+
+        <div class="card">
+            <h3 class="card-title">Brief Description</h3>
+            <p class="card-text">
+                This paper, authored by <strong>Etsuji Tomita, Akira Tanaka, and Haruhisa Takahashi</strong>, presents a depth-first search algorithm for generating all maximal cliques in an undirected graph. The algorithm employs pruning techniques similar to the <strong>Bron–Kerbosch algorithm</strong> and outputs the maximal cliques in a tree-like form. The authors prove that the worst-case time complexity of their algorithm is <strong> O(3n/3) </strong>, which is optimal for an  n-vertex graph since there can be up to 3^n/3 maximal cliques in such a graph. The paper also includes computational experiments demonstrating that the algorithm performs efficiently in practice, outperforming other existing algorithms for clique enumeration.
+            </p>
+        </div>
+
+        <!-- Algorithm Overview -->
+        <div class="card">
+            <h3 class="card-title">Algorithm Overview</h3>
+            <p class="card-text">
+                The algorithm works by recursively expanding a set of vertices Q that forms a complete subgraph (clique). At each step, the algorithm explores vertices in the neighborhood of Q to find larger cliques. Two key pruning methods are used to reduce unnecessary computations:
+                <ol>
+                    <li><strong>Pruning based on processed vertices:</strong> Once a vertex is processed, it is excluded from further expansions to avoid redundant clique generation.</li>
+                    <li><strong>Pruning based on adjacency:</strong> The algorithm selects a vertex  u  that maximizes the number of adjacent vertices in the candidate set, ensuring that the search space is minimized.</li>
+                </ol>
+                The algorithm outputs the maximal cliques in a compact tree-like format, which saves memory and improves efficiency.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3 class="card-title">Performance on Datasets</h3>
+            <div class="table-responsive">
+                <table class="performance-table">
+                    <thead>
+                        <tr>
+                            <th>Test Case</th>
+                            <th>Total Maximal Cliques</th>
+                            <th>Largest Clique Size</th>
+                            <th>Execution Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Wiki-vote.txt</td>
+                            <td>459,002</td>
+                            <td>17</td>
+                            <td>16.15 seconds</td>
+                        </tr>
+                        <tr>
+                            <td>Email-enron.txt</td>
+                            <td>226,859</td>
+                            <td>20</td>
+                            <td>15.3 seconds</td>
+                        </tr>
+                        <tr>
+                            <td>AS-skitter.txt</td>
+                            <td>37,322,355</td>
+                            <td>67</td>
+                            <td>9,678.7 seconds</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="text-center mt-3">
+                <img src="WORST.jpeg" 
+                     alt="Tomita Algorithm Performance Graph" 
+                     class="img-fluid">
+                <p class="mt-2"><em>Performance metrics for Tomita et al. algorithm across different datasets (Table 2)</em></p>
+            </div>
+        </div>
+    <!-- Research Paper 2: Eppstein et al. -->
+    <section id="paper2" class="section">
+        <h2>Research Paper 2: Listing All Maximal Cliques in Sparse Graphs in Near-Optimal Time</h2>
+
+        <div class="card">
+            <h3 class="card-title">Brief Description</h3>
+            <p class="card-text">
+                This paper, authored by <strong>David Eppstein, Maarten Löffler, and Darren Strash</strong>, presents a near-optimal algorithm for enumerating all maximal cliques in sparse graphs, parametrized by the graph's <strong>degeneracy</strong>. The degeneracy of a graph is a measure of its sparsity, defined as the smallest number d  such that every subgraph contains a vertex of degree at most d. The authors modify the classic <strong>Bron–Kerbosch algorithm</strong> to achieve a running time of <strong>O(dn3^d/3)</strong>, which is nearly optimal. They also provide matching upper and lower bounds on the number of maximal cliques in a graph with degeneracy d, showing that the worst-case number of maximal cliques is <strong> theta(d(n−d)3^d/3)</strong>.
+            </p>
+        </div>
+
+        <!-- Algorithm Overview -->
+        <div class="card">
+            <h3 class="card-title">Algorithm Overview</h3>
+            <p class="card-text">
+                The algorithm is a modified version of the <strong>Bron–Kerbosch algorithm</strong>, which is a recursive backtracking method for finding all maximal cliques in a graph. The key innovation in this paper is the use of a <strong>degeneracy ordering</strong> of the vertices, which ensures that each vertex has at most d neighbors that come later in the ordering. This ordering significantly reduces the number of recursive calls and improves the algorithm's efficiency.
+                <br><br>
+                The algorithm works as follows:
+                <ol>
+                    <li><strong>Degeneracy Ordering:</strong>   The vertices are processed in a degeneracy order, where each vertex has at most  d later neighbors.</li>
+                    <li><strong>Recursive Clique Enumeration:</strong>   For each vertex v, the algorithm recursively explores cliques that include v and its later neighbors. The recursive calls are limited to the later neighbors, ensuring that the search space is small.</li>
+                    <li><strong>Pivoting Strategy:</strong>   At each step, the algorithm uses a <strong>pivoting strategy</strong> to further reduce the number of recursive calls. The pivot is chosen to maximize the number of neighbors in the candidate set, which minimizes the branching factor of the recursion.</li>
+                </ol>
+                The algorithm's time complexity is <strong> O(dn3^d/3) </strong>, which is nearly optimal given the worst-case number of maximal cliques in a graph with degeneracy d . This makes the algorithm particularly efficient for sparse graphs, where  d  is small.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3 class="card-title">Performance on Datasets</h3>
+            <div class="table-responsive">
+                <table class="performance-table">
+                    <thead>
+                        <tr>
+                            <th>Test Case</th>
+                            <th>Total Maximal Cliques</th>
+                            <th>Largest Clique Size</th>
+                            <th>Execution Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Wiki-vote.txt</td>
+                            <td>459,002</td>
+                            <td>17</td>
+                            <td>1,263.27 sec</td>
+                        </tr>
+                        <tr>
+                            <td>Email-enron.txt</td>
+                            <td>226,859</td>
+                            <td>20</td>
+                            <td>770.6 sec</td>
+                        </tr>
+                        <tr>
+                            <td>AS-skitter.txt</td>
+                            <td>37,322,355</td>
+                            <td>67</td>
+                            <td>25,754.2 sec</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="text-center mt-4">
+                <img src="ELS1.jpeg" 
+                     alt="Eppstein Algorithm Performance Comparison" 
+                     class="img-fluid"
+                     style="max-width: 80%; margin: 20px auto;">
+                <p class="text-muted" style="margin-top: 15px; font-size: 0.9em;">
+                    Figure 3: Performance metrics comparison across datasets using Eppstein et al. algorithm
+                </p>
+            </div>
+        </div>
+
+    <!-- Research Paper 3: Chiba and Nishizeki -->
+    <section id="paper3" class="section">
+        <h2>Research Paper 3: Arboricity and Subgraph Listing Algorithms</h2>
+
+        <div class="card">
+            <h3 class="card-title">Brief Description</h3>
+            <p class="card-text">
+                This paper, authored by <strong>Norishige Chiba and Takao Nishizeki</strong>, introduces a novel edge-searching strategy for efficiently listing various subgraphs in a graph, such as triangles, quadrangles, complete subgraphs, and cliques. The authors use the <strong>arboricity</strong> of a graph, denoted as a(G), as a key parameter to bound the running time of their algorithms. Arboricity is the minimum number of edge-disjoint spanning forests into which a graph can be decomposed. The paper presents four algorithms:
+                <ol>
+                    <li><strong>Triangle Listing:</strong> Lists all triangles in O(a(G)m) time.</li>
+                    <li><strong>Quadrangle Listing:</strong> Finds all quadrangles in O(a(G)m) time.</li>
+                    <li><strong>Complete Subgraph Listing:</strong> Lists all complete subgraphs of order l(>=2) in O(la(G)-2m) time.</li>
+                    <li><strong>Clique Listing:</strong> Lists all cliques in O(a(G)m) time per clique.</li>
+                </ol>
+                The algorithms are particularly efficient for sparse graphs, such as planar graphs, where a(G)\leq 3\, resulting in linear time complexity.
+            </p>
+        </div>
+
+        <!-- Algorithm Overview -->
+        <div class="card">
+            <h3 class="card-title">Algorithm Overview</h3>
+            <p class="card-text">
+                The key idea behind the algorithms is a <strong>vertex-processing strategy</strong> that processes vertices in non-increasing order of degree and deletes them after processing to avoid duplication. The algorithms rely on the following steps:
+                <ol>
+                    <li><strong>Vertex Ordering:</strong> Vertices are sorted in non-increasing order of degree.</li>
+                    <li><strong>Edge Searching:</strong> For each vertex  v, the algorithm searches for subgraphs (e.g., triangles, quadrangles) in the subgraph induced by the neighbors of v.</li>
+                    <li><strong>Deletion:</strong> After processing a vertex, it is deleted from the graph to prevent redundant work.</li>
+                </ol>
+                The <strong>arboricity</strong>  a(G) is used to bound the number of edges in the subgraphs being processed, ensuring that the algorithms run efficiently. For example:
+                <ul>
+                    <li><strong>Triangle Listing:</strong> The algorithm detects triangles by checking for edges between the neighbors of each vertex.</li>
+                    <li><strong>Clique Listing:</strong> The algorithm recursively builds cliques by adding vertices that are adjacent to all vertices in the current clique.</li>
+                </ul>
+                The time complexity of the algorithms is expressed in terms of a(G), making them highly efficient for sparse graphs.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3 class="card-title">Performance on Datasets</h3>
+            <div class="table-responsive">
+                <table class="performance-table">
+                    <thead>
+                        <tr>
+                            <th>Test Case</th>
+                            <th>Total Maximal Cliques</th>
+                            <th>Largest Clique Size</th>
+                            <th>Execution Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Wiki-vote.txt</td>
+                            <td>459,002</td>
+                            <td>17</td>
+                            <td>24.5 sec</td>
+                        </tr>
+                        <tr>
+                            <td>Email-enron.txt</td>
+                            <td>226,859</td>
+                            <td>20</td>
+                            <td>12.7 sec</td>
+                        </tr>
+                        <tr>
+                            <td>AS-skitter.txt</td>
+                            <td>37,322,355</td>
+                            <td>67</td>
+                            <td>12,169.7 sec</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="text-center mt-4">
+                <img src="CHIBA1.jpeg" 
+                     alt="Chiba & Nishizeki Algorithm Performance" 
+                     class="img-fluid"
+                     style="max-width: 80%; margin: 20px auto;">
+                <p class="text-muted" style="margin-top: 15px; font-size: 0.9em;">
+                    Figure 4: Performance metrics comparison using Chiba & Nishizeki's approach
+                </p>
+            </div>
+        </div>
+
+    <!-- Comparative Analysis -->
+    <section id="comparative-analysis" class="section">
+        <h2>Comparative Analysis</h2>
+
+        <div class="card">
+            <h3 class="card-title">Best Algorithm for Wikipedia Administrator </h3>
+            <p class="card-text"><strong>Eppstein et al.:</strong></p>
+            <div class="text-center">
+                <img src="wikicomp.jpeg" alt="Histogram for Wikipedia Administrator" class="img-fluid">
+                <p class="mt-2"><em>Histogram comparing execution times of all three algorithms on the Wikipedia Administrator.</em></p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3 class="card-title">Best Algorithm for Enron email network</h3>
+            <p class="card-text"><strong>Tomita et al.:</strong> </p>
+            <div class="text-center">
+                <img src="emailcomp.jpeg" alt="Line Chart for Enron email network" class="img-fluid">
+                <p class="mt-2"><em>Line chart comparing execution times of all three algorithms on the Enron email network.</em></p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3 class="card-title">Best Algorithm for Skitter</h3>
+            <p class="card-text"><strong>Eppstein et al.:</strong></p>
+            <div class="text-center">
+                <img src="skittercomp.jpeg" alt="Bar Chart for Skitter" class="img-fluid">
+                <p class="mt-2"><em>Bar chart comparing execution times of all three algorithms on the Skitter.</em></p>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2025 Algorithm Project Showcase. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
